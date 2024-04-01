@@ -16,6 +16,27 @@ spec:
     spec:
       containers:
       - name: sps-container
-        image: pnander/springboot-docker:1.0
+        image: pnander/springboot-docker-k8s:3.0
         ports:
         - containerPort: 8090
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef: #Fetches required data from ConfigMap
+              name: sps-configmap
+              key: db-host
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef: #Fetches required data from ConfigMap
+              name: sps-configmap
+              key: db-name
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef: #Fetches required data from Secret
+              name: sps-secret
+              key: db-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef: #Fetches required data from Secret
+              name: sps-secret
+              key: db-password
