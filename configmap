@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sps-configmap
+data:
+  db-host: database-host-from-configmap
+  db-name: database-name-from-configmap
