@@ -8,6 +8,6 @@ spec:
     app: sps
   ports:
     - protocol: TCP
-      port: 8090
-      targetPort: 8090
+      port: 9000
+      targetPort: 9000
       nodePort: 30100
